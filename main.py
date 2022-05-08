@@ -47,7 +47,7 @@ def uploadFile(filename,currentBits,totalBits,speed,time,args):
 
 def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jdb=None):
     try:
-        bot.editMessageText(message,'🤜Preparando Para Subir☁...')
+        bot.editMessageText(message,'☁️Preparando Para Subir☁...')
         evidence = None
         fileid = None
         user_info = jdb.get_user(update.message.sender.username)
@@ -289,7 +289,7 @@ def onmessage(update,bot:ObigramClient):
                         return
                     jdb.remove(user)
                     jdb.save()
-                    msg = '🦶Fuera @'+user+' Baneado❌'
+                    msg = '❌Fuera @'+user+' Baneado❌'
                     bot.sendMessage(update.message.chat.id,msg)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /banuser username❌')
@@ -438,6 +438,21 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
                     bot.sendMessage(update.message.chat.id,statInfo)
+            except:
+                if user_info:
+                    user_info['proxy'] = ''
+                    statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
+                    bot.sendMessage(update.message.chat.id,statInfo)
+            return
+            if '/proxyno' in msgText:
+            try:
+                getUser = user_info
+                if getUser:
+                    getUser['proxy'] = proxy
+                    jdb.remove(username,getUser)
+                    jdb.save()
+                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+                    bot.sendMessage(update.message.chat.id,'❌Proxy Removido❌')
             except:
                 if user_info:
                     user_info['proxy'] = ''
