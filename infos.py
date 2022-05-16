@@ -81,9 +81,12 @@ def createCompresing(filename,filesize,splitsize):
     return msg
 def createFinishUploading(filename,filesize,split_size,current,count,findex):
     msg= '📱' + str(filename)+'📱\n'
+    msg+= '📝Descripción: ' + '\n'
     msg+= '💾Tamaño: ' + str(sizeof_fmt(filesize))+'\n'
-    msg+= '🎛️Partes: ' + str(current) + '/' + str(count) +'\n\n'
+    msg+= '💻Gráficos: ' + '\n'
+    msg+= '🎛️Partes: ' + str(current) + '/' + str(count) +'\n'
     msg+= '🌎Internet: \n'
+    msg+= '🎮Plataforma: ' + '\n'
     msg+= '🌆Canal: @multigamess3 \n'
     msg+= '☁️Subido por: @diago8888\n'
     return msg
