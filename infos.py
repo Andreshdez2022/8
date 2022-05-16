@@ -80,12 +80,12 @@ def createCompresing(filename,filesize,splitsize):
     msg+= '💾Cantidad Partes: ' + str(round(int(filesize/splitsize)+1,1))+'\n\n'
     return msg
 def createFinishUploading(filename,filesize,split_size,current,count,findex):
-    msg = '📌Proceso Finalizado📌\n\n'
-    msg+= '🔖Nombre: ' + str(filename)+'\n'
-    msg+= '🗂Tamaño Total: ' + str(sizeof_fmt(filesize))+'\n'
-    msg+= '📂Tamaño Partes: ' + str(sizeof_fmt(split_size))+'\n'
-    msg+= '📤Partes Subidas: ' + str(current) + '/' + str(count) +'\n\n'
-    msg+= '🗑Borrar Archivo: ' + '/del_'+str(findex)
+    msg= '📱' + str(filename)+📱'\n'
+    msg+= '💾Tamaño: ' + str(sizeof_fmt(filesize))+'\n'
+    msg+= '🎛️Partes: ' + str(current) + '/' + str(count) +'\n\n'
+    msg+= '🌎Internet: \n'
+    msg+= '🌆Canal: @multigamess3 \n'
+    msg+= '☁️Subido por: @diago8888\n'
     return msg
 
 def createFileMsg(filename,files):
