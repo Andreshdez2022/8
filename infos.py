@@ -80,7 +80,7 @@ def createCompresing(filename,filesize,splitsize):
     msg+= '💾Cantidad Partes: ' + str(round(int(filesize/splitsize)+1,1))+'\n\n'
     return msg
 def createFinishUploading(filename,filesize,split_size,current,count,findex):
-    msg= '📱' + str(filename)+📱'\n'
+    msg= '📱' + str(filename)+'📱\n'
     msg+= '💾Tamaño: ' + str(sizeof_fmt(filesize))+'\n'
     msg+= '🎛️Partes: ' + str(current) + '/' + str(count) +'\n\n'
     msg+= '🌎Internet: \n'
