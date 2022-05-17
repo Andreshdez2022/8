@@ -310,6 +310,19 @@ def onmessage(update,bot:ObigramClient):
             else:
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
+       if '/transferbot' in msgText:
+            isadmin = jdb.is_admin(username)
+            if isadmin:
+                try:
+                    user = str(msgText).split(' ')[1]
+                    tl_admin_user = str(msgText).split(' ')[1]
+                    msg = '✅Bot transferido a @'+user+' ✅'
+                    bot.sendMessage(update.message.chat.id,msg)
+                except:
+                    bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
+            else:
+                bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
+            return
         if '/getdb' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
