@@ -136,7 +136,7 @@ def createStat(username,userdata,isadmin):
     if isadmin:
         msgAdmin = 'Si'
     msg+= '🦾Admin : ' + msgAdmin + '\n'
-    proxy = 'NO'
+      proxy = 'NO' + view_proxy + '\n'
     if userdata['proxy'] !='':
        proxy = 'SI' + view_proxy + '\n'
     tokenize = 'NO'
