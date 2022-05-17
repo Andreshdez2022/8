@@ -460,8 +460,7 @@ def onmessage(update,bot:ObigramClient):
                     bot.sendMessage(update.message.chat.id,statInfo)
             return
         if '/view_proxy' in msgText:
-        	bot.sendMessage(update.message.chat.id,view_proxy)
-            return
+        	bot.sendMessage(update.message.chat.id,view_proxy)            
         if '/dir' in msgText:
             try:
                 cmd = str(msgText).split(' ',2)
