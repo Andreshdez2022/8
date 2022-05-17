@@ -242,7 +242,7 @@ def onmessage(update,bot:ObigramClient):
 
         #set in debug
         tl_admin_user = os.environ.get('administrador')
-
+         
         jdb = JsonDatabase('database')
         jdb.check_create()
         jdb.load()
@@ -307,19 +307,6 @@ def onmessage(update,bot:ObigramClient):
                     bot.sendMessage(update.message.chat.id,msg)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /banuser username❌')
-            else:
-                bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
-            return
-       if '/transferbot' in msgText:
-            isadmin = jdb.is_admin(username)
-            if isadmin:
-                try:
-                    user = str(msgText).split(' ')[1]
-                    tl_admin_user = str(msgText).split(' ')[1]
-                    msg = '✅Bot transferido a @'+user+' ✅'
-                    bot.sendMessage(update.message.chat.id,msg)
-                except:
-                    bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
             else:
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
@@ -452,6 +439,30 @@ def onmessage(update,bot:ObigramClient):
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
             return
+            
+        if '/search_proxy' in msgText:
+            msg_start = '📡Buscando proxy 📡 puede demorar hasta dos horas'
+            bot.sendMessage(update.message.chat.id,msg_start)
+            print("Buscando proxy...")
+            for port in range(2080,2085):
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+                result = sock.connect_ex(('181.225.253.202',port))  
+
+                if result == 0: 
+                    print ("Puerto abierto!")
+                    print (f"Puerto: {port}")  
+                    proxy = f'181.225.253.202:{port}'
+                    proxy_new = S5Crypto.encrypt(f'{proxy}')
+                    msg = 'Su nuevo proxy es:\n\nsocks5://' + proxy_new
+                    bot.sendMessage(update.message.chat.id,msg)
+                    break
+                else: 
+                    print ("Error...Buscando...")
+                    print (f"Buscando en el puerto: {port}")
+                    sock.close()
+            
+            return
+
             
         if '/uptype' in msgText:
             try:
