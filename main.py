@@ -427,6 +427,19 @@ def onmessage(update,bot:ObigramClient):
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /cloud (moodle or cloud)❌')
             return
+            
+        if '/crypt' in msgText:
+            proxy_sms = str(msgText).split(' ')[1]
+            proxy = S5Crypto.encrypt(f'{proxy_sms}')
+            bot.sendMessage(update.message.chat.id, f'Proxy encryptado:\n{proxy}')
+            return
+            
+        if '/decrypt' in msgText:
+            proxy_sms = str(msgText).split(' ')[1]
+            proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
+            bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
+            return
+            
         if '/uptype' in msgText:
             try:
                 cmd = str(msgText).split(' ',2)
