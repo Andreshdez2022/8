@@ -445,7 +445,6 @@ def onmessage(update,bot:ObigramClient):
             try:
                 cmd = str(msgText).split(' ',2)
                 proxy = cmd[1]
-                view_proxy = proxy
                 getUser = user_info
                 if getUser:
                     getUser['proxy'] = proxy
@@ -459,8 +458,6 @@ def onmessage(update,bot:ObigramClient):
                     statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
                     bot.sendMessage(update.message.chat.id,statInfo)
             return
-        if '/view_proxy' in msgText:
-        	bot.sendMessage(update.message.chat.id,view_proxy)            
         if '/dir' in msgText:
             try:
                 cmd = str(msgText).split(' ',2)
@@ -494,7 +491,7 @@ def onmessage(update,bot:ObigramClient):
         thread.store('msg',message)
 
         if '/start' in msgText:
-            start_msg = 'Hola soy un bot de subida y descarga gratis a la nube mi creador es @diago8888\n'
+            start_msg = 'Hola soy un bot de subida y descarga gratis a la nube ,mi creador es @diago8888.Mi versión es Bot Creeper 1.0\n'
             bot.editMessageText(message,start_msg)
         elif '/files' == msgText and user_info['cloudtype']=='moodle':
              proxy = ProxyCloud.parse(user_info['proxy'])

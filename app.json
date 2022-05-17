@@ -1,6 +1,6 @@
 ﻿{
-  "name": "Bot 7.1",
-  "description": "Bot 7.1.",
+  "name": "Bot Creeper 1.0",
+  "description": "Bot Creeper 1.0",
   "env": {
     "administrador": {
       "description": "Usuario",
