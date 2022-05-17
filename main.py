@@ -310,15 +310,6 @@ def onmessage(update,bot:ObigramClient):
             else:
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
-        if '/reset' in msgText:
-        	user = str(msgText).split(' ')[1]
-        	jdb.remove(user)
-            jdb.save()
-            jdb.create_user(user)
-            jdb.save()
-            msg = '✅Bot reiniciado para @'+user+' ✅'
-            bot.sendMessage(update.message.chat.id,msg)
-            return
         if '/getdb' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
@@ -454,6 +445,7 @@ def onmessage(update,bot:ObigramClient):
             try:
                 cmd = str(msgText).split(' ',2)
                 proxy = cmd[1]
+                view_proxy = proxy
                 getUser = user_info
                 if getUser:
                     getUser['proxy'] = proxy
