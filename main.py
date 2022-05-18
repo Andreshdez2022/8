@@ -479,12 +479,12 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save_data_user(username,getUser)
                     jdb.save()
                     statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-                    bot.sendMessage(update.message.chat.id,'💾Configuración guardada con éxito✅')
+                    bot.sendMessage(update.message.chat.id,'✅Proxy desactivado✅')
             except:
                 if user_info:
                     user_info['proxy'] = ''
                     statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
-                    bot.sendMessage(update.message.chat.id,'💾Configuración guardada con éxito✅')
+                    bot.sendMessage(update.message.chat.id,'✅Proxy desactivado✅')
             return
         if '/dir' in msgText:
             try:
@@ -517,6 +517,16 @@ def onmessage(update,bot:ObigramClient):
         message = bot.sendMessage(update.message.chat.id,'🕰Procesando🕰...')
 
         thread.store('msg',message)
+
+def start(update, context):
+
+    update.message.reply_text(
+        text='Hola soy un bot de subida y descarga gratis a la nube ,mi creador es @diago8888.Mi versión es Bot Creeper 1.0\n',
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton(text='Creador', url='https://t.me/diago8888')],
+        ])
+    )
+
 
         if '/start' in msgText:
             start_msg = 'Hola soy un bot de subida y descarga gratis a la nube ,mi creador es @diago8888.Mi versión es Bot Creeper 1.0\n'
