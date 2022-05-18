@@ -292,19 +292,7 @@ def onmessage(update,bot:ObigramClient):
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
             else:
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
-            return
-        if '/url' in msgText:
-      	    isadmin = jdb.is_admin(username)
-            if isadmin:
-                try:
-                    url = str(msgText).split(' ')[1]
-                    msg = '✅El url es'+url+'✅'
-                    bot.sendMessage(update.message.chat.id,msg)
-                except:
-                    bot.sendMessage(update.message.chat.id,'❌Error en el comando /url❌')
-            else:
-                bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
-            return
+            return     
         if '/banuser' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
@@ -325,6 +313,8 @@ def onmessage(update,bot:ObigramClient):
         if '/getdb' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
+                bot.sendMessage(update.message.chat.id,downloader)
+            	bot.sendMessage(update.message.chat.id,url)
                 bot.sendMessage(update.message.chat.id,'📔Base De Datos📔')
                 bot.sendFile(update.message.chat.id,'database.jdb')
             else:
