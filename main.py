@@ -518,16 +518,6 @@ def onmessage(update,bot:ObigramClient):
 
         thread.store('msg',message)
 
-def start(update, context):
-
-    update.message.reply_text(
-        text='Hola soy un bot de subida y descarga gratis a la nube ,mi creador es @diago8888.Mi versión es Bot Creeper 1.0\n',
-        reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton(text='Creador', url='https://t.me/diago8888')],
-        ])
-    )
-
-
         if '/start' in msgText:
             start_msg = 'Hola soy un bot de subida y descarga gratis a la nube ,mi creador es @diago8888.Mi versión es Bot Creeper 1.0\n'
             bot.editMessageText(message,start_msg)
