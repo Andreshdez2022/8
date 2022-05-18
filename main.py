@@ -294,8 +294,8 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
         if '/url' in msgText:
-      	isadmin = jdb.is_admin(username)
-          if isadmin:
+      	    isadmin = jdb.is_admin(username)
+            if isadmin:
                 try:
                     url = str(msgText).split(' ')[1]
                     msg = '✅El url es'+url+'✅'
