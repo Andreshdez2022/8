@@ -434,6 +434,12 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id, f'Proxy encryptado:\n{proxy}')
             return
             
+        if '/url' in msgText:
+            url_sms = str(msgText).split(' ')[1]
+            url = url_sms
+            bot.sendMessage(update.message.chat.id,url)
+            return
+            
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
@@ -479,12 +485,12 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save_data_user(username,getUser)
                     jdb.save()
                     statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-                    bot.sendMessage(update.message.chat.id,'✅Proxy desactivado✅')
+                    bot.sendMessage(update.message.chat.id,'✅Proxy Desactivado✅')
             except:
                 if user_info:
                     user_info['proxy'] = ''
                     statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
-                    bot.sendMessage(update.message.chat.id,'✅Proxy desactivado✅')
+                    bot.sendMessage(update.message.chat.id,'✅ Proxy Desactivado✅')
             return
         if '/dir' in msgText:
             try:
