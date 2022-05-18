@@ -434,10 +434,9 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id, f'Proxy encryptado:\n{proxy}')
             return
             
-        if '/url' in msgText:
-            url_sms = str(msgText).split(' ')[1]
-            url = url_sms
-            bot.sendMessage(update.message.chat.id,url)
+        if '/storage' in msgText:
+        	storage = + str(sizeof_fmt(filesize))
+            bot.sendMessage(update.message.chat.id,storage)
             return
             
         if '/decrypt' in msgText:
