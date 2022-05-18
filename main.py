@@ -293,6 +293,18 @@ def onmessage(update,bot:ObigramClient):
             else:
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
+        if '/url' in msgText:
+      	isadmin = jdb.is_admin(username)
+          if isadmin:
+                try:
+                    url = str(msgText).split(' ')[1]
+                    msg = '✅El url es'+url+'✅'
+                    bot.sendMessage(update.message.chat.id,msg)
+                except:
+                    bot.sendMessage(update.message.chat.id,'❌Error en el comando /url❌')
+            else:
+                bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
+            return
         if '/banuser' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
