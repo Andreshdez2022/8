@@ -435,7 +435,7 @@ def onmessage(update,bot:ObigramClient):
             return
             
         if '/storage' in msgText:
-        	storage = str(sizeof_fmt(filesize))
+            storage = str(sizeof_fmt(filesize))
             bot.sendMessage(update.message.chat.id,storage)
             return
          
