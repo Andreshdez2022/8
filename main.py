@@ -440,6 +440,21 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id,recorder_sms)
             return
             
+        if '/view_proxy' in msgText:
+            try:
+
+
+                getUser = user_info
+
+                if getUser:
+                    proxy = getUser['proxy']
+                    bot.sendMessage(update.message.chat.id,proxy)
+            except:
+                if user_info:
+                    proxy = user_info['proxy']
+                    bot.sendMessage(update.message.chat.id,proxy)
+            return
+            
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
