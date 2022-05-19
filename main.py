@@ -433,15 +433,10 @@ def onmessage(update,bot:ObigramClient):
             proxy = S5Crypto.encrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'Proxy encryptado:\n{proxy}')
             return
-            
-        if '/storage' in msgText:
-            storage = str(sizeof_fmt(filesize))
-            bot.sendMessage(update.message.chat.id,storage)
-            return
          
         if '/recorder' in msgText:
             recorder_sms = str(msgText).split(' ')[2]
-            time.sleep(str(msgText).split(' ')[1])
+            time.sleep(int(recorder_sms[1]))
             bot.sendMessage(update.message.chat.id,recorder_sms)
             return
             
