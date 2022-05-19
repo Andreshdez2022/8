@@ -438,6 +438,12 @@ def onmessage(update,bot:ObigramClient):
         	storage = + str(sizeof_fmt(filesize))
             bot.sendMessage(update.message.chat.id,storage)
             return
+         
+        if '/recorder' in msgText:
+            recorder_sms = str(msgText).split(' ')[1]
+            time.sleep(10)
+            bot.sendMessage(update.message.chat.id,recorder_sms)
+            return
             
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
