@@ -441,7 +441,7 @@ def onmessage(update,bot:ObigramClient):
          
         if '/recorder' in msgText:
             recorder_sms = str(msgText).split(' ')[2]
-            time.sleep(0 + str(msgText).split(' ')[1])
+            time.sleep(str(msgText).split(' ')[1])
             bot.sendMessage(update.message.chat.id,recorder_sms)
             return
             
