@@ -461,6 +461,20 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
             return
             
+        if '/suma' in msgText:
+            1 = str(msgText).split(' ')[1]
+            2 = str(msgText).split(' ')[2]
+            result = 1 + 2
+            print("la suma es: ",result)
+            return
+            
+        if '/rest' in msgText:
+            1 = str(msgText).split(' ')[1]
+            2 = str(msgText).split(' ')[2]
+            result = 1 - 2
+            print("la resta es: ",result)
+            return
+            
         if '/search_proxy' in msgText:
             msg_start = '😒No disponible temporalmente'
             bot.sendMessage(update.message.chat.id,msg_start)
