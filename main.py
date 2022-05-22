@@ -471,7 +471,7 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
             return
             
-         if '/resta' in msgText:
+        if '/resta' in msgText:
             number1 = str(msgText).split(' ')[1]
             number2 = str(msgText).split(' ')[2]
             number1_(int(number1))
@@ -480,7 +480,7 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
             return
             
-         if '/division' in msgText:
+        if '/division' in msgText:
             number1 = str(msgText).split(' ')[1]
             number2 = str(msgText).split(' ')[2]
             number1_(int(number1))
@@ -489,7 +489,7 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
             return
             
-         if '/multiplicación' in msgText:
+        if '/multiplicación' in msgText:
             number1 = str(msgText).split(' ')[1]
             number2 = str(msgText).split(' ')[2]
             number1_(int(number1))
