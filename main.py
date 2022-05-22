@@ -435,8 +435,8 @@ def onmessage(update,bot:ObigramClient):
             return
          
         if '/recorder' in msgText:
-            recorder_sms = str(msgText).split(' ')[1]
-            time.sleep(int(recorder_sms[1]))
+            recorder_sms = str(msgText).split(' ')[2]
+            time.sleep(int(recorder_sms))
             bot.sendMessage(update.message.chat.id,recorder_sms)
             return
             
@@ -461,30 +461,28 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
             return
             
-            if '/search_proxy' in msgText:
-            msg_start = 'Buscando proxy...⏰'
+        if '/search_proxy' in msgText:
+            msg_start = '😒No disponible temporalmente'
             bot.sendMessage(update.message.chat.id,msg_start)
             print("Buscando proxy...")
-            for port in range(1000,9999):
+            for port in range(2080,2085):
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-                sock.settimeout(1)
-                proxy_sms = str(msgText).split(' ')[1]
-                result = sock.connect_ex((str(msgText).split(' ')[1],port))  
+                result = sock.connect_ex(('181.225.253.188',port))  
 
                 if result == 0: 
-                    print ("Proxy abierto!")
+                    print ("Puerto abierto!")
                     print (f"Puerto: {port}")  
-                    proxy = f'str(msgText).split(' ')[1]:{port}'
+                    proxy = f'181.225.253.188:{port}'
                     proxy_new = S5Crypto.encrypt(f'{proxy}')
-                    msg = 'Nuevo proxy👇 \n\n/proxy socks5://' + proxy_new
+                    msg = 'Su nuevo proxy es:\n\nsocks5://' + proxy_new
                     bot.sendMessage(update.message.chat.id,msg)
                     break
                 else: 
-                    print ("Error...")
-                    print (f"Buscando...: {port}")
+                    print ("Error...Buscando...")
+                    print (f"Buscando en el puerto: {port}")
                     sock.close()
-      
-            return
+            
+            return            
             
         if '/uptype' in msgText:
             try:
