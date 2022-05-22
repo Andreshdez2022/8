@@ -463,30 +463,38 @@ def onmessage(update,bot:ObigramClient):
             return
             #calculadora
         if '/suma' in msgText:
-            number1 = int(msgText).split(' ')[1]
-            number2 = int(msgText).split(' ')[2]
-            result = number1 + number2
+            number1 = str(msgText).split(' ')[1]
+            number2 = str(msgText).split(' ')[2]
+            number1_(int(number1))
+            number2_(int(number2))
+            result = number1_ + number2_
             bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
             return
             
-        if '/resta' in msgText:
-            number1 = int(msgText).split(' ')[1]
-            number2 = int(msgText).split(' ')[2]
-            result = number1 - number2
-            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
-            return
-        
-        if '/division' in msgText:
-            number1 = int(msgText).split(' ')[1]
-            number2 = int(msgText).split(' ')[2]
-            result = number1 / number2
+         if '/resta' in msgText:
+            number1 = str(msgText).split(' ')[1]
+            number2 = str(msgText).split(' ')[2]
+            number1_(int(number1))
+            number2_(int(number2))
+            result = number1_ - number2_
             bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
             return
             
-        if '/multiplicación' in msgText:
-            number1 = int(msgText).split(' ')[1]
-            number2 = int(msgText).split(' ')[2]
-            result = number1 * number2
+         if '/division' in msgText:
+            number1 = str(msgText).split(' ')[1]
+            number2 = str(msgText).split(' ')[2]
+            number1_(int(number1))
+            number2_(int(number2))
+            result = number1_ / number2_
+            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
+            return
+            
+         if '/multiplicación' in msgText:
+            number1 = str(msgText).split(' ')[1]
+            number2 = str(msgText).split(' ')[2]
+            number1_(int(number1))
+            number2_(int(number2))
+            result = number1_ * number2_
             bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
             return
             #calculadora fin
