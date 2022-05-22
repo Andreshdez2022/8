@@ -467,34 +467,9 @@ def onmessage(update,bot:ObigramClient):
             number2 = str(msgText).split(' ')[2]
             number1_(int(number1))
             number2_(int(number2))
+            number1 = number1_
+            number2 = number2_
             result = number1_ + number2_
-            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
-            return
-            
-        if '/resta' in msgText:
-            number1 = str(msgText).split(' ')[1]
-            number2 = str(msgText).split(' ')[2]
-            number1_(int(number1))
-            number2_(int(number2))
-            result = number1_ - number2_
-            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
-            return
-            
-        if '/division' in msgText:
-            number1 = str(msgText).split(' ')[1]
-            number2 = str(msgText).split(' ')[2]
-            number1_(int(number1))
-            number2_(int(number2))
-            result = number1_ / number2_
-            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
-            return
-            
-        if '/multiplicación' in msgText:
-            number1 = str(msgText).split(' ')[1]
-            number2 = str(msgText).split(' ')[2]
-            number1_(int(number1))
-            number2_(int(number2))
-            result = number1_ * number2_
             bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
             return
             #calculadora fin
