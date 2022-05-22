@@ -433,30 +433,6 @@ def onmessage(update,bot:ObigramClient):
             proxy = S5Crypto.encrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'Proxy encryptado:\n{proxy}')
             return
-
-        if '/search_proxy' in msgText:
-            msg_start = 'Buscando proxy...⏰'
-            bot.sendMessage(update.message.chat.id,msg_start)
-            print("Buscando proxy...")
-            for port in range(1000,9999):
-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-                sock.settimeout(1)
-                result = sock.connect_ex(('181.225.255.17',port))  
-
-                if result == 0: 
-                    print ("Proxy abierto!")
-                    print (f"Puerto: {port}")  
-                    proxy = f'181.225.255.17:{port}'
-                    proxy_new = S5Crypto.encrypt(f'{proxy}')
-                    msg = 'Nuevo proxy👇 \n\n/proxy socks5://' + proxy_new
-                    bot.sendMessage(update.message.chat.id,msg)
-                    break
-                else: 
-                    print ("Error...")
-                    print (f"Buscando...: {port}")
-                    sock.close()
-      
-            return
          
         if '/recorder' in msgText:
             recorder_sms = str(msgText).split(' ')[1]
@@ -483,6 +459,31 @@ def onmessage(update,bot:ObigramClient):
             proxy_sms = str(msgText).split(' ')[1]
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
+            return
+            
+            if '/search_proxy' in msgText:
+            msg_start = 'Buscando proxy...⏰'
+            bot.sendMessage(update.message.chat.id,msg_start)
+            print("Buscando proxy...")
+            for port in range(1000,9999):
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+                sock.settimeout(1)
+                proxy_sms = str(msgText).split(' ')[1]
+                result = sock.connect_ex((str(msgText).split(' ')[1],port))  
+
+                if result == 0: 
+                    print ("Proxy abierto!")
+                    print (f"Puerto: {port}")  
+                    proxy = f'str(msgText).split(' ')[1]:{port}'
+                    proxy_new = S5Crypto.encrypt(f'{proxy}')
+                    msg = 'Nuevo proxy👇 \n\n/proxy socks5://' + proxy_new
+                    bot.sendMessage(update.message.chat.id,msg)
+                    break
+                else: 
+                    print ("Error...")
+                    print (f"Buscando...: {port}")
+                    sock.close()
+      
             return
             
         if '/uptype' in msgText:
