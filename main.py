@@ -436,7 +436,8 @@ def onmessage(update,bot:ObigramClient):
          
         if '/recorder' in msgText:
             recorder_sms = str(msgText).split(' ')[2]
-            time.sleep(int(recorder_sms))
+            time_sms = str(msgText).split(' ')[1]
+            time.sleep(int(time_sms))
             bot.sendMessage(update.message.chat.id,recorder_sms)
             return
             
@@ -462,8 +463,8 @@ def onmessage(update,bot:ObigramClient):
             return
             
         if '/suma' in msgText:
-            number1 = int(input(msgText).split(' ')[1]
-            number2 = int(input(msgText).split(' ')[2]
+            number1 = int(msgText).split(' ')[1]
+            number2 = int(msgText).split(' ')[2]
             result = number1 + number2
             print("la suma es: ",result)
             return
