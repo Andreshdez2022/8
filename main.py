@@ -462,17 +462,10 @@ def onmessage(update,bot:ObigramClient):
             return
             
         if '/suma' in msgText:
-            1 = str(msgText).split(' ')[1]
-            2 = str(msgText).split(' ')[2]
-            result = 1 + 2
+            number1 = int(input(msgText).split(' ')[1]
+            number2 = int(input(msgText).split(' ')[2]
+            result = number1 + number2
             print("la suma es: ",result)
-            return
-            
-        if '/rest' in msgText:
-            1 = str(msgText).split(' ')[1]
-            2 = str(msgText).split(' ')[2]
-            result = 1 - 2
-            print("la resta es: ",result)
             return
             
         if '/search_proxy' in msgText:
