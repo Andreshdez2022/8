@@ -461,14 +461,35 @@ def onmessage(update,bot:ObigramClient):
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
             return
-            
+            #calculadora
         if '/suma' in msgText:
             number1 = int(msgText).split(' ')[1]
             number2 = int(msgText).split(' ')[2]
             result = number1 + number2
-            print("la suma es: ",result)
+            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
             return
             
+        if '/resta' in msgText:
+            number1 = int(msgText).split(' ')[1]
+            number2 = int(msgText).split(' ')[2]
+            result = number1 - number2
+            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
+            return
+        
+        if '/division' in msgText:
+            number1 = int(msgText).split(' ')[1]
+            number2 = int(msgText).split(' ')[2]
+            result = number1 / number2
+            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
+            return
+            
+        if '/multiplicación' in msgText:
+            number1 = int(msgText).split(' ')[1]
+            number2 = int(msgText).split(' ')[2]
+            result = number1 * number2
+            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
+            return
+            #calculadora fin
         if '/search_proxy' in msgText:
             msg_start = '😒No disponible temporalmente'
             bot.sendMessage(update.message.chat.id,msg_start)
