@@ -449,17 +449,22 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
             return
         if '/search_proxy' in msgText:
-            msg_start = '😒No disponible temporalmente'
+            msg_start = 'Buscando proxy😎'
             bot.sendMessage(update.message.chat.id,msg_start)
             print("Buscando proxy...")
-            for port in range(2080,2085):
+            range = str(msgText).split(' ')[1]
+            range_2 = str(msgText).split(' ')[2]
+            ip = str(msgText).split(' ')[3]
+            all= range + range_2 + ip
+            bot.sendMessage(update.message.chat.id,all)
+            for port in range((int(range)),(int(range2))):
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-                result = sock.connect_ex(('181.225.253.188',port))  
+                result = sock.connect_ex(('(int(ip))',port))  
 
                 if result == 0: 
                     print ("Puerto abierto!")
                     print (f"Puerto: {port}")  
-                    proxy = f'181.225.253.188:{port}'
+                    proxy = f'(int(ip)):{port}'
                     proxy_new = S5Crypto.encrypt(f'{proxy}')
                     msg = 'Su nuevo proxy es:\n\nsocks5://' + proxy_new
                     bot.sendMessage(update.message.chat.id,msg)
