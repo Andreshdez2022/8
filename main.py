@@ -19,7 +19,7 @@ import ProxyCloud
 import socket
 import tlmedia
 import S5Crypto
-
+import Cryptoacc
 
 
 def downloadFile(downloader,filename,currentBits,totalBits,speed,time,args):
@@ -409,6 +409,12 @@ def onmessage(update,bot:ObigramClient):
             proxy = S5Crypto.encrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'Proxy encryptado:\n{proxy}')
             return
+            
+        if '/cryptacc' in msgText:
+            proxy_sms = str(msgText).split(' ')[1]
+            proxy = Cryptoacc.encrypt(f'{proxy_sms}')
+            bot.sendMessage(update.message.chat.id, f'Proxy encryptado:\n{proxy}')
+            return
          
         if '/recorder' in msgText:
             recorder_sms = str(msgText).split(' ')[2]
@@ -435,6 +441,11 @@ def onmessage(update,bot:ObigramClient):
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
+            bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
+            return
+        if '/decryptacc' in msgText:
+            proxy_sms = str(msgText).split(' ')[1]
+            proxy_de = Cryptoacc.decrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
             return
         if '/search_proxy' in msgText:
