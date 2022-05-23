@@ -389,30 +389,6 @@ def onmessage(update,bot:ObigramClient):
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /repo id❌')
             return
-        if '/tokenize_on' in msgText:
-            try:
-                getUser = user_info
-                if getUser:
-                    getUser['tokenize'] = 1
-                    jdb.save_data_user(username,getUser)
-                    jdb.save()
-                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-                    bot.sendMessage(update.message.chat.id,statInfo)
-            except:
-                bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❌')
-            return
-        if '/tokenize_off' in msgText:
-            try:
-                getUser = user_info
-                if getUser:
-                    getUser['tokenize'] = 0
-                    jdb.save_data_user(username,getUser)
-                    jdb.save()
-                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-                    bot.sendMessage(update.message.chat.id,statInfo)
-            except:
-                bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❌')
-            return
         if '/cloud' in msgText:
             try:
                 cmd = str(msgText).split(' ',2)
@@ -461,18 +437,6 @@ def onmessage(update,bot:ObigramClient):
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'Proxy decryptado:\n{proxy_de}')
             return
-            #calculadora
-        if '/suma' in msgText:
-            number1 = str(msgText).split(' ')[1]
-            number2 = str(msgText).split(' ')[2]
-            number1_(int(number1))
-            number2_(int(number2))
-            number1 = number1_
-            number2 = number2_
-            result = number1_ + number2_
-            bot.sendMessage(update.message.chat.id,"El resultado es: ",result)
-            return
-            #calculadora fin
         if '/search_proxy' in msgText:
             msg_start = '😒No disponible temporalmente'
             bot.sendMessage(update.message.chat.id,msg_start)
@@ -575,7 +539,7 @@ def onmessage(update,bot:ObigramClient):
         thread.store('msg',message)
 
         if '/start' in msgText:
-            start_msg = 'Hola soy un bot de subida y descarga gratis a la nube ,mi creador es @diago8888.Mi versión es Bot Creeper 1.0\n'
+            start_msg = '✋Hola soy un bot de subida y descarga gratis📤 a la nube ,mi creador es @diago8888✅.Mi versión es Bot Creeper 1.0.Pertenezco a la cadena Bot Creeper Uploader\n'
             bot.editMessageText(message,start_msg)
         elif '/files' == msgText and user_info['cloudtype']=='moodle':
              proxy = ProxyCloud.parse(user_info['proxy'])

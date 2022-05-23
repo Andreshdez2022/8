@@ -14,8 +14,8 @@ def text_progres(index,max):
 		index_make = 1
 		make_text += '\n['
 		while(index_make<21):
-			if porcent >= index_make * 5: make_text+='●'
-			else: make_text+='○'
+			if porcent >= index_make * 5: make_text+='🟦'
+			else: make_text+='🟥'
 			index_make+=1
 		make_text += ']\n'
 		return make_text
@@ -63,7 +63,7 @@ def createUploading(filename,totalBits,currentBits,speed,time,originalname=''):
     msg += '📱 Nombre: '+filename+'\n'
     if originalname!='':
         msg = str(msg).replace(filename,originalname)
-        msg+= '🎛️ Parte: ' + str(filename)+'\n'
+        msg+= '📑Parte: ' + str(filename)+'\n'
     msg += text_progres(currentBits,totalBits)+'\n'
     msg += '💯Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n'
     msg += '💾 Total: '+sizeof_fmt(totalBits)+'\n\n'
@@ -77,18 +77,12 @@ def createCompresing(filename,filesize,splitsize):
     msg+= '📱Nombre: ' + str(filename)+'\n'
     msg+= '💾Tamaño Total: ' + str(sizeof_fmt(filesize))+'\n'
     msg+= '📂Tamaño Partes: ' + str(sizeof_fmt(splitsize))+'\n'
-    msg+= '🎛️Cantidad Partes: ' + str(round(int(filesize/splitsize)+1,1))+'\n\n'
+    msg+= '📑Cantidad Partes: ' + str(round(int(filesize/splitsize)+1,1))+'\n\n'
     return msg
 def createFinishUploading(filename,filesize,split_size,current,count,findex):
     msg= '📱' + str(filename)+'📱\n'
-    msg+= '📝Descripción: ' + '\n'
     msg+= '💾Tamaño: ' + str(sizeof_fmt(filesize))+'\n'
-    msg+= '💻Gráficos: ' + '\n'
-    msg+= '🎛️Partes: ' + str(current) + '/' + str(count) +'\n'
-    msg+= '🌎Internet: \n'
-    msg+= '🎮Plataforma: ' + '\n'
-    msg+= '🌆Canal: @multigamess3 \n'
-    msg+= '☁️Subido por: @diago8888\n'
+    msg+= '📑Partes: ' + str(current) + '/' + str(count) +'\n'
     return msg
 
 def createFileMsg(filename,files):
